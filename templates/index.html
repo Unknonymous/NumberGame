@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename = 'styles.css') }} ">
+    <title>The Great Number Game</title>
+
+</head>
+<body>
+    <div id = "wrapper">
+        
+        <h2 id="title" class="banner">Welcome to the Great Number Game!</h2>
+        <h3 class="subtitle" class="banner">I am thinking of a number between 1 and 100</h3>
+        <h3 class="subtitle" class="banner">Take a guess!</h3>
+
+        <!-- shows on wrong guess -->
+        <div id="wrong" class= {{ guess }}>
+            <p class="bigSans"> {{ response }}</p>
+        </div><!--closes wrong-->
+
+        <!-- shows on winning answer -->
+        <div id="right" class= {{ win }} >  
+            <p class="bigSans">{{ winResp }}</p>
+        </div>
+
+        <div id="formHolder">
+            
+            <!-- shows when new or on wrong guess -->
+            <form action ='/guess' method="POST" class="guess">
+                <input type="text" name="myGuess" id='poss'>
+                <input type="submit" value="Submit" class="bttn">
+            </form>
+            <!-- shows only on winning answer -->
+            <form action ='/clear' method="POST" class="win">
+                <input type="hidden" name="resetter" value="clear">
+                <input type="submit" value="Play Again" class="bttn">
+            
+            </form>
+        
+        </div><!--closes formholder-->
+    
+    </div><!--closes wrapper-->
+    
+</body>
+</html>
